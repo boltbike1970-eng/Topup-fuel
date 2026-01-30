@@ -1,0 +1,88 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef08a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shadow filter -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Rounded square background with blue gradient -->
+  <rect width="512" height="512" rx="115" fill="url(#bgGradient)"/>
+  
+  <!-- Bicycle wheel -->
+  <g transform="translate(256, 256)">
+    <!-- Outer rim -->
+    <circle cx="0" cy="0" r="140" 
+            fill="none" 
+            stroke="white" 
+            stroke-width="16" 
+            opacity="0.95"
+            filter="url(#shadow)"/>
+    
+    <!-- Inner rim detail -->
+    <circle cx="0" cy="0" r="125" 
+            fill="none" 
+            stroke="white" 
+            stroke-width="3" 
+            opacity="0.6"/>
+    
+    <!-- Spokes (12 spokes for realistic wheel) -->
+    <g opacity="0.8">
+      <line x1="0" y1="0" x2="0" y2="-125" stroke="white" stroke-width="3"/>
+      <line x1="0" y1="0" x2="108.3" y2="-62.5" stroke="white" stroke-width="3"/>
+      <line x1="0" y1="0" x2="108.3" y2="62.5" stroke="white" stroke-width="3"/>
+      <line x1="0" y1="0" x2="0" y2="125" stroke="white" stroke-width="3"/>
+      <line x1="0" y1="0" x2="-108.3" y2="62.5" stroke="white" stroke-width="3"/>
+      <line x1="0" y1="0" x2="-108.3" y2="-62.5" stroke="white" stroke-width="3"/>
+    </g>
+    
+    <!-- Hub (center) -->
+    <circle cx="0" cy="0" r="24" 
+            fill="white" 
+            opacity="0.9"
+            filter="url(#shadow)"/>
+    <circle cx="0" cy="0" r="16" 
+            fill="#1d4ed8" 
+            opacity="0.7"/>
+    
+    <!-- Lightning bolt in center -->
+    <g filter="url(#shadow)">
+      <!-- Bolt shape - flat top, pointed bottom -->
+      <path d="M -40 -90 L 40 -90 L 10 0 L 30 0 L 0 90 L -10 0 L -30 0 Z" 
+            fill="url(#boltGradient)" 
+            stroke="#f59e0b" 
+            stroke-width="5" 
+            stroke-linejoin="round"
+            stroke-linecap="round"/>
+      
+      <!-- Inner highlight for depth -->
+      <path d="M -35 -85 L 35 -85 L 8 -5" 
+            fill="#fef3c7" 
+            opacity="0.4"/>
+    </g>
+  </g>
+  
+  <!-- Subtle corner accents -->
+  <circle cx="90" cy="90" r="8" fill="white" opacity="0.15"/>
+  <circle cx="422" cy="90" r="8" fill="white" opacity="0.15"/>
+  <circle cx="90" cy="422" r="8" fill="white" opacity="0.15"/>
+  <circle cx="422" cy="422" r="8" fill="white" opacity="0.15"/>
+</svg>
